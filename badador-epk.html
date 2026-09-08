@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badador | Live Modular Techno</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e8e8e8;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-bottom: 1px solid #222;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #666;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #222;
+        }
+
+        /* Bio */
+        .bio p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .bio .highlight {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* Events */
+        .event {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 12px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .event:last-child {
+            border-bottom: none;
+        }
+
+        .event-date {
+            font-size: 0.85rem;
+            color: #666;
+            min-width: 100px;
+        }
+
+        .event-name {
+            flex: 1;
+            margin: 0 15px;
+            color: #fff;
+        }
+
+        .event-venue {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Music */
+        .music-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .music-link {
+            display: block;
+            padding: 20px;
+            background: #111;
+            border: 1px solid #222;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .music-link:hover {
+            background: #1a1a1a;
+            border-color: #333;
+        }
+
+        .music-link h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .music-link p {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Masterclass */
+        .masterclass {
+            padding: 25px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border: 1px solid #2a2a2a;
+            border-left: 3px solid #ff4444;
+        }
+
+        .masterclass h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .masterclass p {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 15px;
+        }
+
+        .masterclass a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #ff4444;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: background 0.2s;
+        }
+
+        .masterclass a:hover {
+            background: #ff5555;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #222;
+            margin-top: 40px;
+        }
+
+        .contact p {
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .contact a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid #444;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.2s;
+        }
+
+        .contact a:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .event {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .event-date {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>BADADOR</h1>
+            <p class="subtitle">Live Modular Techno • Tehran → World</p>
+        </div>
+
+        <!-- Bio -->
+        <section class="bio">
+            <h2>About</h2>
+            <p>
+                <span class="highlight">Badador (Bahador Qorashi)</span> is an Iranian live modular techno performer crafting beat-driven grooves through improvisational hardware sequencing.
+            </p>
+            <p>
+                Based in Tehran, he has played in Pisa, Saint Petersburg, Moscow, Goa, Istanbul, and Baku — his most frequent European home being <span class="highlight">Club Temple</span> in Istanbul. Since 2020 he runs <span class="highlight">Sanati Records</span>, releasing Iranian and international underground artists; his compilations have been featured on <span class="highlight">Bandcamp New & Notable</span>.
+            </p>
+            <p>
+                His sets push analog machines into generative territory, designed for clubs and festivals seeking something beyond the DJ booth.
+            </p>
+        </section>
+
+        <!-- Masterclass -->
+        <section>
+            <h2>Featured</h2>
+            <div class="masterclass">
+                <h3>Home of Sound Masterclass</h3>
+                <p>
+                    Initiation to Modular Synthesis — from scratch to complete patch. 
+                    Learn Badador's unique approach alongside artists like Rødhåd, Blawan, and Daniel Avery.
+                </p>
+                <a href="https://www.homeofsound.co.uk/p/badador-masterclass-initiation-to-modular-synthesis-from-scratch-to-complete-patch" target="_blank">View Course →</a>
+            </div>
+        </section>
+
+        <!-- Events -->
+        <section>
+            <h2>Past Events</h2>
+            <div class="events">
+                <div class="event">
+                    <span class="event-date">Sep 2025</span>
+                    <span class="event-name">Shadow of War</span>
+                    <span class="event-venue">zegondLab, TBA</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">Aug 2025</span>
+                    <span class="event-name">МИР-2</span>
+                    <span class="event-venue">Blank, Saint Petersburg</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">Mar 2025</span>
+                    <span class="event-name">Rollie Pres. Ancient Methods</span>
+                    <span class="event-venue">TBA, Istanbul</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">Sep 2024</span>
+                    <span class="event-name">Amygdala</span>
+                    <span class="event-venue">Tehran</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">May 2024</span>
+                    <span class="event-name">SYNCHRON</span>
+                    <span class="event-venue">ARMA17, Moscow</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">Apr 2024</span>
+                    <span class="event-name">МИР-2</span>
+                    <span class="event-venue">Blank, Saint Petersburg</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">Feb 2024</span>
+                    <span class="event-name">Residents</span>
+                    <span class="event-venue">Tehran</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">Sep 2023</span>
+                    <span class="event-name">Be.Minimal Invites Rave</span>
+                    <span class="event-venue">Suma Han, Istanbul</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">Aug 2023</span>
+                    <span class="event-name">Saturday at Suma Han</span>
+                    <span class="event-venue">Studio Stage, Istanbul</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">Sep 2022</span>
+                    <span class="event-name">Siah X Astralworx</span>
+                    <span class="event-venue">Hyatt Centric, Bangalore</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">Jul 2022</span>
+                    <span class="event-name">Club Night</span>
+                    <span class="event-venue">Club Temple, Istanbul</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">Jun 2022</span>
+                    <span class="event-name">Friday Ritual</span>
+                    <span class="event-venue">Club Temple, Istanbul</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">Jun 2022</span>
+                    <span class="event-name">Mystic Worlds: Local Madness</span>
+                    <span class="event-venue">Club Temple, Istanbul</span>
+                </div>
+                <div class="event">
+                    <span class="event-date">Nov 2019</span>
+                    <span class="event-name">Live Performance</span>
+                    <span class="event-venue">Pichazi Art House</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Music -->
+        <section>
+            <h2>Music</h2>
+            <div class="music-links">
+                <a href="https://sanati.bandcamp.com" target="_blank" class="music-link">
+                    <h3>Sanati Records — Bandcamp</h3>
+                    <p>Label releases, compilations, Badador solo work</p>
+                </a>
+                <a href="https://youtube.com/@badador" target="_blank" class="music-link">
+                    <h3>YouTube Channel</h3>
+                    <p>Live sets, tutorials, modular synthesis content</p>
+                </a>
+                <!-- Add your SoundCloud/Mixcloud link here when ready -->
+                <a href="#" target="_blank" class="music-link" style="opacity: 0.5;">
+                    <h3>SoundCloud / Mixcloud</h3>
+                    <p>[Add your best mix link]</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <div class="contact">
+            <p>For booking inquiries:</p>
+            <a href="mailto:sanatirecords+booking@gmail.com">sanatirecords+booking@gmail.com</a>
+            
+            <div class="social-links">
+                <a href="https://instagram.com/badador" target="_blank">Instagram</a>
+                <a href="https://facebook.com/badador" target="_blank">Facebook</a>
+                <a href="https://soundcloud.com/badador" target="_blank">SoundCloud</a>
+                <a href="https://twitter.com/badador" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
