@@ -1,0 +1,11 @@
+# Images (too large for git, upload via drag-drop if needed)
+*.jpg
+*.JPG
+*.jpeg
+*.png
+*.gif
+*.webp
+
+# OS files
+.DS_Store
+Thumbs.db
