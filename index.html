@@ -102,6 +102,19 @@ h2{
 .facts .v{color:var(--ink);font-size:13px;font-weight:600;text-align:right;line-height:1.5}
 .facts .v span{display:block;color:var(--muted);font-weight:400}
 
+/* ---------- press photos ---------- */
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.8vw,20px)}
+@media(max-width:760px){.photos{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.photos{grid-template-columns:1fr}}
+.photos a{display:block;border:1px solid var(--line-2);transition:border-color .25s ease}
+.photos img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
+  filter:grayscale(35%) contrast(1.08);
+  transition:filter .25s ease;
+}
+.photos a:hover{border-color:var(--accent)}
+.photos a:hover img{filter:grayscale(0) contrast(1)}
+
 /* ---------- embeds ---------- */
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.6vw,30px)}
 @media(max-width:760px){.duo{grid-template-columns:1fr}}
@@ -172,6 +185,7 @@ footer .eyebrow{color:var(--dim)}
     <nav aria-label="Sections">
       <ul>
         <li><a href="#about">About</a></li>
+        <li><a href="#photos">Photos</a></li>
         <li><a href="#listen">Listen</a></li>
         <li><a href="#watch">Watch</a></li>
         <li><a href="#teaching">Teaching</a></li>
@@ -209,6 +223,27 @@ footer .eyebrow{color:var(--dim)}
         <li><span class="k">Label</span><span class="v">Sanati Records<span>Founder, since 2020</span></span></li>
         <li><span class="k">Played</span><span class="v">IR · RU · TR · IN · IT · AZ<span>Clubs &amp; festivals</span></span></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHOTOS ================= -->
+<section id="photos">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Photos</h2>
+      <p class="eyebrow sec-note">Press imagery — hi-res on request</p>
+    </div>
+    <div class="photos">
+      <a href="live-shot-resized.jpg" target="_blank" rel="noopener">
+        <img src="live-shot-resized.jpg" alt="Badador performing live on modular hardware" loading="lazy">
+      </a>
+      <a href="mg-1564-resized.jpg" target="_blank" rel="noopener">
+        <img src="mg-1564-resized.jpg" alt="Badador's modular system" loading="lazy">
+      </a>
+      <a href="hero-photo-resized.jpg" target="_blank" rel="noopener">
+        <img src="hero-photo-resized.jpg" alt="Badador live" loading="lazy">
+      </a>
     </div>
   </div>
 </section>
