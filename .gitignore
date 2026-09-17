@@ -1,10 +1,18 @@
-# Images (too large for git, upload via drag-drop if needed)
+# Full-resolution source photography — large, kept local only, never committed
+/Photos/
+
+# Images in general are too large for git
 *.jpg
 *.JPG
 *.jpeg
 *.png
 *.gif
 *.webp
+
+# ...except the web-optimised gallery derivatives, which ARE committed.
+# These negations must come AFTER the rules above (last match wins).
+!/gallery/thumb/*.jpg
+!/gallery/full/*.jpg
 
 # OS files
 .DS_Store

@@ -102,18 +102,40 @@ h2{
 .facts .v{color:var(--ink);font-size:13px;font-weight:600;text-align:right;line-height:1.5}
 .facts .v span{display:block;color:var(--muted);font-weight:400}
 
-/* ---------- press photos ---------- */
-.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.8vw,20px)}
-@media(max-width:760px){.photos{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.photos{grid-template-columns:1fr}}
-.photos a{display:block;border:1px solid var(--line-2);transition:border-color .25s ease}
-.photos img{
-  width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
-  filter:grayscale(35%) contrast(1.08);
-  transition:filter .25s ease;
+/* ---------- photos ---------- */
+.gallery{columns:3;column-gap:clamp(12px,1.8vw,20px)}
+@media(max-width:900px){.gallery{columns:2}}
+@media(max-width:560px){.gallery{columns:1}}
+.shot{
+  display:block;border:1px solid var(--line-2);margin:0 0 clamp(12px,1.8vw,20px);
+  break-inside:avoid;cursor:zoom-in;transition:border-color .25s ease;
 }
-.photos a:hover{border-color:var(--accent)}
-.photos a:hover img{filter:grayscale(0) contrast(1)}
+.shot img{width:100%;height:auto;display:block;filter:grayscale(30%) contrast(1.06);transition:filter .25s ease}
+.shot:hover,.shot:focus-visible{border-color:var(--accent)}
+.shot:hover img,.shot:focus-visible img{filter:grayscale(0) contrast(1)}
+
+/* ---------- lightbox ---------- */
+.viewer{
+  position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.95);
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(16px,4vw,56px);
+}
+.viewer[hidden]{display:none}
+.viewer-img{max-width:100%;max-height:100%;object-fit:contain;display:block;border:1px solid var(--line)}
+.viewer button{
+  position:absolute;background:transparent;border:1px solid var(--line-2);color:var(--ink);
+  font-family:inherit;font-size:var(--eyebrow);font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;cursor:pointer;padding:12px 16px;line-height:1;
+  transition:background .18s ease,color .18s ease,border-color .18s ease;
+}
+.viewer button:hover{background:var(--ink);color:#000;border-color:var(--ink)}
+.v-close{top:clamp(14px,3vw,24px);right:clamp(14px,3vw,24px)}
+.v-prev{left:clamp(14px,3vw,24px);top:50%;transform:translateY(-50%)}
+.v-next{right:clamp(14px,3vw,24px);top:50%;transform:translateY(-50%)}
+.v-count{
+  position:absolute;bottom:clamp(14px,3vw,24px);left:50%;transform:translateX(-50%);
+  color:var(--muted);font-size:var(--eyebrow);font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+}
 
 /* ---------- embeds ---------- */
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.6vw,30px)}
@@ -232,21 +254,47 @@ footer .eyebrow{color:var(--dim)}
   <div class="wrap">
     <div class="sec-head">
       <h2>Photos</h2>
-      <p class="eyebrow sec-note">Press imagery — hi-res on request</p>
+      <p class="eyebrow sec-note">Click to enlarge · 9 images · hi-res masters on request</p>
     </div>
-    <div class="photos">
-      <a href="live-shot-resized.jpg" target="_blank" rel="noopener">
-        <img src="live-shot-resized.jpg" alt="Badador performing live on modular hardware" loading="lazy">
+    <div class="gallery">
+      <a class="shot" href="gallery/full/badador-01.jpg">
+        <img src="gallery/thumb/badador-01.jpg" alt="Badador — press photo 01" width="600" height="900" loading="lazy">
       </a>
-      <a href="mg-1564-resized.jpg" target="_blank" rel="noopener">
-        <img src="mg-1564-resized.jpg" alt="Badador's modular system" loading="lazy">
+      <a class="shot" href="gallery/full/badador-02.jpg">
+        <img src="gallery/thumb/badador-02.jpg" alt="Badador — press photo 02" width="600" height="900" loading="lazy">
       </a>
-      <a href="hero-photo-resized.jpg" target="_blank" rel="noopener">
-        <img src="hero-photo-resized.jpg" alt="Badador live" loading="lazy">
+      <a class="shot" href="gallery/full/badador-03.jpg">
+        <img src="gallery/thumb/badador-03.jpg" alt="Badador — press photo 03" width="900" height="600" loading="lazy">
+      </a>
+      <a class="shot" href="gallery/full/badador-04.jpg">
+        <img src="gallery/thumb/badador-04.jpg" alt="Badador — press photo 04" width="600" height="900" loading="lazy">
+      </a>
+      <a class="shot" href="gallery/full/badador-05.jpg">
+        <img src="gallery/thumb/badador-05.jpg" alt="Badador — press photo 05" width="900" height="598" loading="lazy">
+      </a>
+      <a class="shot" href="gallery/full/badador-06.jpg">
+        <img src="gallery/thumb/badador-06.jpg" alt="Badador — press photo 06" width="900" height="600" loading="lazy">
+      </a>
+      <a class="shot" href="gallery/full/badador-07.jpg">
+        <img src="gallery/thumb/badador-07.jpg" alt="Badador — press photo 07" width="900" height="600" loading="lazy">
+      </a>
+      <a class="shot" href="gallery/full/badador-08.jpg">
+        <img src="gallery/thumb/badador-08.jpg" alt="Badador — press photo 08" width="900" height="600" loading="lazy">
+      </a>
+      <a class="shot" href="gallery/full/badador-09.jpg">
+        <img src="gallery/thumb/badador-09.jpg" alt="Badador — press photo 09" width="900" height="600" loading="lazy">
       </a>
     </div>
   </div>
 </section>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <img class="viewer-img" alt="">
+  <button class="v-prev" type="button" aria-label="Previous photo">‹</button>
+  <button class="v-next" type="button" aria-label="Next photo">›</button>
+  <button class="v-close" type="button" aria-label="Close viewer">Close</button>
+  <span class="v-count"></span>
+</div>
 
 <!-- ================= LISTEN ================= -->
 <section id="listen">
@@ -447,6 +495,62 @@ footer .eyebrow{color:var(--dim)}
     <span class="eyebrow">Sanati Records</span>
   </div>
 </footer>
+
+<script>
+/* Photo lightbox. Progressive enhancement: without JS each .shot link
+   simply opens the full-size image in a new tab. */
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.shot'));
+  if (!links.length) return;
+  var v = document.getElementById('viewer');
+  if (!v) return;
+  var img = v.querySelector('.viewer-img');
+  var count = v.querySelector('.v-count');
+  var idx = 0, lastFocus = null;
+
+  function show(i) {
+    idx = (i + links.length) % links.length;
+    var a = links[idx];
+    var thumb = a.querySelector('img');
+    img.src = a.getAttribute('href');
+    img.alt = thumb ? thumb.alt.replace(/press photo \d+/, 'press photo ' + (idx + 1) + ', full size') : '';
+    count.textContent = (idx + 1) + ' / ' + links.length;
+  }
+  function open(i) {
+    lastFocus = document.activeElement;
+    show(i);
+    v.hidden = false;
+    document.body.style.overflow = 'hidden';
+    v.querySelector('.v-close').focus();
+  }
+  function close() {
+    v.hidden = true;
+    document.body.style.overflow = '';
+    img.removeAttribute('src');
+    if (lastFocus) lastFocus.focus();
+  }
+
+  links.forEach(function (a, i) {
+    a.addEventListener('click', function (e) {
+      // let cmd/ctrl/shift-click and middle-click behave normally
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      open(i);
+    });
+  });
+
+  v.querySelector('.v-close').addEventListener('click', close);
+  v.querySelector('.v-prev').addEventListener('click', function () { show(idx - 1); });
+  v.querySelector('.v-next').addEventListener('click', function () { show(idx + 1); });
+  v.addEventListener('click', function (e) { if (e.target === v) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (v.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(idx - 1);
+    else if (e.key === 'ArrowRight') show(idx + 1);
+  });
+})();
+</script>
 
 </body>
 </html>
