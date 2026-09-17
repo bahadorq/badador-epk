@@ -136,6 +136,20 @@ h2{
   position:absolute;bottom:clamp(14px,3vw,24px);left:50%;transform:translateX(-50%);
   color:var(--muted);font-size:var(--eyebrow);font-weight:600;letter-spacing:.16em;text-transform:uppercase;
 }
+.shot-cap{
+  display:block;padding:10px 12px;border-top:1px solid var(--line);
+  font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);line-height:1.5;transition:color .25s ease;
+}
+.shot:hover .shot-cap,.shot:focus-visible .shot-cap{color:var(--ink)}
+
+/* ---------- private-archive note ---------- */
+.note{
+  margin-top:clamp(20px,3vw,32px);border:1px solid var(--line-2);background:var(--surface);
+  padding:clamp(18px,2.4vw,28px);
+}
+.note-k{color:var(--accent);display:block;margin-bottom:10px}
+.note p:last-child{color:var(--muted);max-width:72ch}
 
 /* ---------- embeds ---------- */
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.6vw,30px)}
@@ -258,31 +272,40 @@ footer .eyebrow{color:var(--dim)}
     </div>
     <div class="gallery">
       <a class="shot" href="gallery/full/badador-01.jpg">
-        <img src="gallery/thumb/badador-01.jpg" alt="Badador — press photo 01" width="600" height="900" loading="lazy">
+        <img src="gallery/thumb/badador-01.jpg" alt="Badador performing at Amygdala, Tehran, September 2024" width="600" height="900" loading="lazy">
+        <span class="shot-cap">Amygdala · Tehran — Sep 2024</span>
       </a>
       <a class="shot" href="gallery/full/badador-02.jpg">
-        <img src="gallery/thumb/badador-02.jpg" alt="Badador — press photo 02" width="600" height="900" loading="lazy">
+        <img src="gallery/thumb/badador-02.jpg" alt="Badador with Shahab Shahali at Amygdala, Tehran, September 2024" width="900" height="506" loading="lazy">
+        <span class="shot-cap">Amygdala · Tehran — Sep 2024</span>
       </a>
       <a class="shot" href="gallery/full/badador-03.jpg">
-        <img src="gallery/thumb/badador-03.jpg" alt="Badador — press photo 03" width="900" height="600" loading="lazy">
+        <img src="gallery/thumb/badador-03.jpg" alt="Badador at Siah x Astralworx, Hyatt Centric, Bangalore, September 2022" width="900" height="600" loading="lazy">
+        <span class="shot-cap">Siah x Astralworx · Hyatt Centric, Bangalore — Sep 2022</span>
       </a>
       <a class="shot" href="gallery/full/badador-04.jpg">
-        <img src="gallery/thumb/badador-04.jpg" alt="Badador — press photo 04" width="600" height="900" loading="lazy">
+        <img src="gallery/thumb/badador-04.jpg" alt="Badador at Siah x Astralworx, Hyatt Centric, Bangalore, September 2022" width="600" height="900" loading="lazy">
+        <span class="shot-cap">Siah x Astralworx · Hyatt Centric, Bangalore — Sep 2022</span>
       </a>
       <a class="shot" href="gallery/full/badador-05.jpg">
-        <img src="gallery/thumb/badador-05.jpg" alt="Badador — press photo 05" width="900" height="598" loading="lazy">
+        <img src="gallery/thumb/badador-05.jpg" alt="Badador in Goa, India" width="900" height="598" loading="lazy">
+        <span class="shot-cap">Goa, India</span>
       </a>
       <a class="shot" href="gallery/full/badador-06.jpg">
-        <img src="gallery/thumb/badador-06.jpg" alt="Badador — press photo 06" width="900" height="600" loading="lazy">
+        <img src="gallery/thumb/badador-06.jpg" alt="Badador at Blank, Saint Petersburg" width="900" height="600" loading="lazy">
+        <span class="shot-cap">Blank · Saint Petersburg</span>
       </a>
       <a class="shot" href="gallery/full/badador-07.jpg">
-        <img src="gallery/thumb/badador-07.jpg" alt="Badador — press photo 07" width="900" height="600" loading="lazy">
+        <img src="gallery/thumb/badador-07.jpg" alt="Badador at Blank, Saint Petersburg" width="900" height="600" loading="lazy">
+        <span class="shot-cap">Blank · Saint Petersburg</span>
       </a>
       <a class="shot" href="gallery/full/badador-08.jpg">
-        <img src="gallery/thumb/badador-08.jpg" alt="Badador — press photo 08" width="900" height="600" loading="lazy">
+        <img src="gallery/thumb/badador-08.jpg" alt="Badador at Blank, Saint Petersburg" width="900" height="600" loading="lazy">
+        <span class="shot-cap">Blank · Saint Petersburg</span>
       </a>
       <a class="shot" href="gallery/full/badador-09.jpg">
-        <img src="gallery/thumb/badador-09.jpg" alt="Badador — press photo 09" width="900" height="600" loading="lazy">
+        <img src="gallery/thumb/badador-09.jpg" alt="Badador at Blank, Saint Petersburg" width="900" height="600" loading="lazy">
+        <span class="shot-cap">Blank · Saint Petersburg</span>
       </a>
     </div>
   </div>
@@ -337,9 +360,10 @@ footer .eyebrow{color:var(--dim)}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
-    <p class="cap eyebrow" style="margin-top:20px">
-      <b>Private footage</b><span>Tehran underground documentation available on request for verified bookings</span>
-    </p>
+    <div class="note">
+      <p class="eyebrow note-k">Private archive — available on request</p>
+      <p>Live and DJ recordings from Tehran's underground events are available to promoters on request. They are held privately for security reasons and are not published publicly — shared with verified bookings only.</p>
+    </div>
   </div>
 </section>
 
@@ -513,7 +537,7 @@ footer .eyebrow{color:var(--dim)}
     var a = links[idx];
     var thumb = a.querySelector('img');
     img.src = a.getAttribute('href');
-    img.alt = thumb ? thumb.alt.replace(/press photo \d+/, 'press photo ' + (idx + 1) + ', full size') : '';
+    img.alt = thumb ? thumb.alt : '';
     count.textContent = (idx + 1) + ' / ' + links.length;
   }
   function open(i) {
